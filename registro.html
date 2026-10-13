@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro | Creciendo en Pareja</title>
+<meta name="description" content="Registro de matrimonios en Creciendo en Pareja, apostolado de Regnum Christi Guatemala.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Concepto: portada azul marino como el cartel, secciones crema con detalles dorados. Mismo diseño en las tres páginas. */
+:root {
+  --navy: #0c2a69;
+  --navy-deep: #081d4d;
+  --gold: #f0be4c;
+  --gold-soft: #f8e1a0;
+  --cream: #fbf4e2;
+  --paper: #fffaf0;
+  --ink: #14224a;
+  --muted: #55608a;
+  --line: #e3d6b4;
+  --ok: #1d6b3f;
+  --error: #a3231f;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+img { max-width: 100%; }
+.wrap { width: 100%; max-width: 62rem; margin-inline: auto; padding-inline: 1.25rem; }
+
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+section[id], div[id] { scroll-margin-top: 1rem; }
+
+/* Portada */
+.hero { background: var(--navy); color: #fff; text-align: center; padding-block: 1.5rem 4.5rem; }
+.hero-small { padding-block: 1.5rem 3rem; }
+.topnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 1.5rem; font-size: 0.95rem; font-weight: 600; }
+.topnav a { text-decoration: none; padding: 0.5rem 0; border-bottom: 2px solid transparent; color: #dfe6fa; }
+.topnav a:hover, .topnav a[aria-current="page"] { border-bottom-color: var(--gold); color: #fff; }
+.eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); margin-top: 3rem; }
+.hero h1 { font-size: clamp(2.4rem, 8vw, 4.4rem); font-weight: 800; letter-spacing: -0.01em; margin-top: 1rem; text-transform: uppercase; }
+.hero-small h1 { font-size: clamp(2rem, 6vw, 3rem); }
+.rule { width: 6rem; height: 3px; background: var(--gold); margin: 1.5rem auto 0; border: 0; }
+.hero-intro { max-width: 36rem; margin: 1.5rem auto 0; font-size: 1.1875rem; color: #e6ebfa; }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: 0.7rem 1.5rem; border-radius: 0.5rem;
+  font: 700 1rem var(--body); letter-spacing: 0.02em; text-decoration: none; cursor: pointer; border: 2px solid transparent;
+}
+.btn-gold { background: var(--gold); color: var(--navy-deep); }
+.btn-gold:hover { background: var(--gold-soft); }
+.btn-line { border-color: var(--gold); color: #fff; background: transparent; }
+.btn-line:hover { background: rgba(240, 190, 76, 0.15); }
+.btn-small { min-height: 2.5rem; padding: 0.4rem 1rem; font-size: 0.95rem; background: transparent; border-color: var(--navy); color: var(--navy); }
+.btn-small:hover { background: var(--navy); color: #fff; }
+.btn[disabled] { opacity: 0.6; cursor: wait; }
+
+/* Secciones */
+section.block { padding-block: 4rem; }
+.section-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.block h2 { font-size: clamp(1.7rem, 5vw, 2.5rem); color: var(--navy); margin-top: 0.5rem; }
+.prose { max-width: 40rem; margin-top: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.alt { background: var(--paper); border-block: 1px solid var(--line); }
+.facts { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.facts li { background: var(--cream); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem; min-width: 0; }
+.facts strong { display: block; font-family: var(--display); font-size: 1.2rem; color: var(--navy); }
+.facts span { display: block; margin-top: 0.35rem; color: var(--muted); }
+.more { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; }
+
+/* Fechas */
+.events { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2rem; }
+.events > div { min-width: 0; }
+.events h3 { font-size: 1.5rem; color: var(--navy); }
+.event-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.event { display: grid; grid-template-columns: 4.75rem minmax(0, 1fr); gap: 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem; }
+.when { background: var(--navy); color: #fff; border-radius: 0.5rem; text-align: center; padding: 0.6rem 0.25rem; align-self: start; }
+.when b { display: block; font: 800 2rem/1 var(--display); color: var(--gold); }
+.when span { display: block; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.25rem; }
+.event h4 { font-size: 1.2rem; color: var(--navy); }
+.event .day { font-weight: 600; color: var(--muted); margin-top: 0.35rem; }
+.event .verse { font-family: var(--display); font-style: italic; color: var(--navy); margin-top: 0.35rem; }
+.event .detail { margin-top: 0.35rem; color: var(--muted); }
+.event .btn { margin-top: 0.85rem; }
+.empty { border: 1.5px dashed #c9b98f; border-radius: 0.75rem; padding: 1.25rem; color: var(--muted); margin-top: 1rem; }
+
+/* Formularios (páginas de registro y asistencia) */
+.form-page { padding-block: 3rem 4rem; }
+.form-card { background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 1rem; padding: 1.5rem; max-width: 46rem; margin-inline: auto; }
+.form-card-left { margin-inline: 0; margin-top: 1.75rem; }
+.form-card h2 { font-size: 1.6rem; color: var(--navy); }
+.form-card .hint { color: var(--muted); margin-top: 0.35rem; }
+.after { max-width: 46rem; margin: 1.5rem auto 0; display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; color: var(--muted); }
+form { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 1.5rem; }
+.field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+label, legend { font-weight: 700; font-size: 0.975rem; color: var(--navy); }
+.opt { font-weight: 400; color: var(--muted); }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+  width: 100%; min-height: 3rem; padding: 0.65rem 0.85rem; font: 400 1rem var(--body); color: var(--ink);
+  background: #fff; border: 1.5px solid #b9bfd6; border-radius: 0.5rem;
+}
+textarea { min-height: 6rem; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 1px; border-color: var(--navy); }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.choices { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.choice span { display: flex; align-items: center; min-height: 3rem; padding: 0.6rem 1rem; border: 1.5px solid #b9bfd6; border-radius: 0.5rem; background: #fff; font-weight: 600; color: var(--navy); }
+.choice input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; }
+.choice input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+.consent { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.95rem; color: var(--ink); }
+.consent input { width: 1.4rem; height: 1.4rem; margin-top: 0.2rem; flex: none; accent-color: var(--navy); }
+.consent label { font-weight: 400; color: var(--ink); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.status { min-height: 1.5rem; font-weight: 600; }
+.status.ok { color: var(--ok); }
+.status.error { color: var(--error); }
+.form-card .btn-gold { background: var(--navy); color: #fff; }
+.form-card .btn-gold:hover { background: var(--navy-deep); }
+
+footer { background: var(--navy-deep); color: #c9d2ee; padding-block: 2.5rem; text-align: center; font-size: 0.95rem; }
+footer strong { color: #fff; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (min-width: 40rem) {
+  .wrap { padding-inline: 2rem; }
+  .facts { grid-template-columns: repeat(3, 1fr); }
+  .form-card { padding: 2.25rem; }
+  form { grid-template-columns: 1fr 1fr; }
+  .full { grid-column: 1 / -1; }
+  .choices { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 52rem) {
+  .events { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hero hero-small">
+  <div class="wrap">
+    <nav class="topnav" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#fechas">Fechas</a>
+      <a href="registro.html" aria-current="page">Registro</a>
+      <a href="asistencia.html">Asistencia</a>
+      <a href="index.html#dudas">Dudas</a>
+    </nav>
+    <p class="eyebrow">Creciendo en Pareja</p>
+    <h1>Registro</h1>
+    <hr class="rule">
+    <p class="hero-intro">Llenen estos datos una sola vez. Después solo confirman su asistencia a cada fecha.</p>
+  </div>
+</header>
+
+<main class="form-page">
+  <div class="wrap">
+    <div class="form-card">
+      <h2>Registro de la pareja</h2>
+      <p class="hint">Los campos marcados con * son obligatorios.</p>
+      <form id="form-registro" novalidate>
+        <div class="hp" aria-hidden="true"><label for="r-honey">No llenar</label><input type="text" id="r-honey" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="field">
+          <label for="r-n1">Nombre completo de él *</label>
+          <input type="text" id="r-n1" name="Nombre de él" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="r-n2">Nombre completo de ella *</label>
+          <input type="text" id="r-n2" name="Nombre de ella" required>
+        </div>
+        <div class="field">
+          <label for="r-tel1">Teléfono de él *</label>
+          <input type="tel" id="r-tel1" name="Teléfono de él" inputmode="tel" required>
+        </div>
+        <div class="field">
+          <label for="r-tel2">Teléfono de ella *</label>
+          <input type="tel" id="r-tel2" name="Teléfono de ella" inputmode="tel" required>
+        </div>
+        <div class="field">
+          <label for="r-mail">Correo electrónico *</label>
+          <input type="email" id="r-mail" name="Correo" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="r-fecha">Fecha en que se casaron *</label>
+          <input type="date" id="r-fecha" name="Fecha de matrimonio" required>
+        </div>
+        <div class="field">
+          <label for="r-antes">¿Han participado antes? <span class="opt">(opcional)</span></label>
+          <select id="r-antes" name="Han participado antes">
+            <option value="">Seleccionar</option>
+            <option>Es la primera vez</option>
+            <option>Ya hemos participado</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="r-como">¿Cómo se enteraron de Creciendo en Pareja? <span class="opt">(opcional)</span></label>
+          <input type="text" id="r-como" name="Cómo se enteraron">
+        </div>
+        <div class="field full">
+          <label for="r-coment">Comentarios <span class="opt">(opcional)</span></label>
+          <textarea id="r-coment" name="Comentarios"></textarea>
+        </div>
+        <div class="consent full">
+          <input type="checkbox" id="r-grupo" name="Quieren ser agregados al grupo">
+          <label for="r-grupo">Queremos que nos agreguen al grupo de Creciendo en Pareja.</label>
+        </div>
+        <div class="consent full">
+          <input type="checkbox" id="r-ok" required>
+          <label for="r-ok">Autorizamos que el equipo de Creciendo en Pareja use estos datos solo para contactarnos y organizar los encuentros. *</label>
+        </div>
+        <div class="full">
+          <button class="btn btn-gold" type="submit">Enviar registro</button>
+        </div>
+        <p class="status full" id="r-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="after">
+      <span>¿Ya están registrados?</span>
+      <a class="btn btn-small" href="asistencia.html">Confirmar asistencia</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Regnum Christi · Guatemala</strong></p>
+    <p>Creciendo en Pareja</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================
+   CONFIGURACIÓN: aquí se cambia lo que se actualiza
+   ===================================================== */
+
+// Correo donde llegan los formularios.
+var CORREO_DESTINO = "paulisfz@gmail.com";
+
+// Fechas de grupos de oración y retiros.
+// tipo: "Grupo de oración" o "Retiro".
+// fecha: AAAA-MM-DD. tema, cita, hora y lugar son opcionales (vacío = no se muestra).
+// Para agregar una fecha, copia una línea entre llaves y cambia los datos.
+var EVENTOS = [
+  { tipo: "Grupo de oración", fecha: "2026-01-26", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-02-23", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-03-23", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-04-27", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-05-25", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-06-22", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-07-27", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-08-24", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-09-28", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-10-26", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Grupo de oración", fecha: "2026-11-23", tema: "", cita: "", hora: "", lugar: "Sede zona 10" },
+  { tipo: "Retiro", fecha: "2026-12-14", tema: "Retiro de Adviento y Navidad", cita: "", hora: "", lugar: "" }
+];
+</script>
+<script>
+/* Lógica compartida de las tres páginas. No necesita cambios.
+   Lo que se actualiza (correo y fechas) está en config.js */
+
+var MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+function parseFecha(texto) {
+  var p = texto.split("-");
+  return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+}
+
+function formatoFecha(texto) {
+  var f = parseFecha(texto).toLocaleDateString("es", {
+    weekday: "long", day: "numeric", month: "long", year: "numeric"
+  }).replace(",", "");
+  return f.charAt(0).toUpperCase() + f.slice(1);
+}
+
+function proximos() {
+  var hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  return EVENTOS.filter(function (e) {
+    return parseFecha(e.fecha) >= hoy;
+  }).sort(function (a, b) {
+    return parseFecha(a.fecha) - parseFecha(b.fecha);
+  });
+}
+
+function clave(e) {
+  return e.fecha + "|" + e.tipo;
+}
+
+function crear(tag, clase, texto) {
+  var el = document.createElement(tag);
+  if (clase) el.className = clase;
+  if (texto) el.textContent = texto;
+  return el;
+}
+
+/* ---------- Página de inicio: lista de fechas ---------- */
+
+function tarjeta(e) {
+  var f = parseFecha(e.fecha);
+  var art = crear("article", "event");
+
+  var cuando = crear("div", "when");
+  cuando.appendChild(crear("b", "", String(f.getDate())));
+  cuando.appendChild(crear("span", "", MESES[f.getMonth()] + " " + f.getFullYear()));
+  art.appendChild(cuando);
+
+  var cuerpo = crear("div", "");
+  cuerpo.appendChild(crear("h4", "", e.tema || e.tipo));
+  cuerpo.appendChild(crear("p", "day", formatoFecha(e.fecha)));
+  if (e.cita) cuerpo.appendChild(crear("p", "verse", "Para meditar: " + e.cita));
+  var det = [e.hora, e.lugar].filter(function (x) { return x; }).join(" · ");
+  if (det) cuerpo.appendChild(crear("p", "detail", det));
+
+  var boton = crear("a", "btn btn-small", "Confirmar asistencia");
+  boton.href = "asistencia.html?f=" + encodeURIComponent(clave(e));
+  cuerpo.appendChild(boton);
+
+  art.appendChild(cuerpo);
+  return art;
+}
+
+function pintarLista(idContenedor, tipo, vacio) {
+  var cont = document.getElementById(idContenedor);
+  if (!cont) return;
+  cont.textContent = "";
+  var lista = proximos().filter(function (e) { return e.tipo === tipo; });
+  if (!lista.length) {
+    cont.appendChild(crear("p", "empty", vacio));
+    return;
+  }
+  lista.forEach(function (e) { cont.appendChild(tarjeta(e)); });
+}
+
+/* ---------- Página de asistencia: lista de fechas en el formulario ---------- */
+
+function pintarOpciones() {
+  var sel = document.getElementById("a-sesion");
+  if (!sel) return;
+  sel.textContent = "";
+  var lista = proximos();
+  var primera = document.createElement("option");
+  primera.value = "";
+  primera.textContent = lista.length ? "Seleccionar fecha" : "Aún no hay fechas publicadas";
+  sel.appendChild(primera);
+  lista.forEach(function (e) {
+    var o = document.createElement("option");
+    var texto = e.tipo + " · " + formatoFecha(e.fecha) + (e.tema ? " · " + e.tema : "");
+    o.value = texto;
+    o.textContent = texto;
+    o.setAttribute("data-clave", clave(e));
+    sel.appendChild(o);
+  });
+
+  var pedida = "";
+  try { pedida = new URLSearchParams(window.location.search).get("f") || ""; } catch (err) { pedida = ""; }
+  if (pedida) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].getAttribute("data-clave") === pedida) { sel.selectedIndex = i; return; }
+    }
+  }
+  if (lista.length === 1) sel.selectedIndex = 1;
+}
+
+/* ---------- Formularios ---------- */
+
+function mostrarEstado(el, tipo, texto) {
+  el.className = "status full " + tipo;
+  el.textContent = texto;
+}
+
+function validar(form) {
+  var campos = form.querySelectorAll("[required]");
+  for (var i = 0; i < campos.length; i++) {
+    var c = campos[i];
+    if (c.type === "radio") {
+      if (!form.querySelector('input[name="' + c.name + '"]:checked')) {
+        return "Falta responder: " + c.closest("fieldset").querySelector("legend").textContent.replace("*", "").trim();
+      }
+    } else if (c.type === "checkbox") {
+      if (!c.checked) return "Necesitamos su autorización para guardar los datos.";
+    } else if (!c.value.trim()) {
+      var et = form.querySelector('label[for="' + c.id + '"]');
+      return "Falta llenar: " + (et ? et.textContent.replace("*", "").trim() : "un campo obligatorio");
+    }
+  }
+  var mail = form.querySelector('input[type="email"]');
+  if (mail && mail.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value.trim())) {
+    return "El correo no parece correcto. Revísenlo.";
+  }
+  return "";
+}
+
+function enviar(form, estado, asunto, mensajeOk) {
+  var error = validar(form);
+  if (error) { mostrarEstado(estado, "error", error); return; }
+
+  if (CORREO_DESTINO.indexOf("CAMBIAR_POR") === 0) {
+    mostrarEstado(estado, "error", "Falta configurar el correo de destino en la página. Avisa a quien administra el sitio.");
+    return;
+  }
+
+  var datos = { _subject: asunto, _template: "table", _captcha: "false" };
+  var entradas = form.querySelectorAll("input, select, textarea");
+  for (var i = 0; i < entradas.length; i++) {
+    var e = entradas[i];
+    if (!e.name) continue;
+    if (e.name === "_honey") { datos._honey = e.value; continue; }
+    if (e.type === "radio" && !e.checked) continue;
+    if (e.type === "checkbox") { datos[e.name] = e.checked ? "Sí" : "No"; continue; }
+    if (e.type === "date" && e.value) {
+      var d = e.value.split("-");
+      datos[e.name] = d[2] + "/" + d[1] + "/" + d[0];
+      continue;
+    }
+    if (e.value && e.value.trim()) datos[e.name] = e.value.trim();
+  }
+  if (datos._honey) { return; }
+  delete datos._honey;
+
+  var boton = form.querySelector('button[type="submit"]');
+  boton.disabled = true;
+  mostrarEstado(estado, "", "Enviando...");
+
+  fetch("https://formsubmit.co/ajax/" + encodeURIComponent(CORREO_DESTINO), {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(datos)
+  }).then(function (res) {
+    return res.json().then(function (j) { return { ok: res.ok, json: j }; });
+  }).then(function (r) {
+    var exito = r.ok && (r.json.success === true || r.json.success === "true");
+    if (!exito) throw new Error("fallo");
+    form.reset();
+    mostrarEstado(estado, "ok", mensajeOk);
+  }).catch(function () {
+    mostrarEstado(estado, "error", "No se pudo enviar. Revisen su conexión e intenten de nuevo.");
+  }).then(function () {
+    boton.disabled = false;
+  });
+}
+
+/* ---------- Arranque según la página ---------- */
+
+pintarLista("lista-grupos", "Grupo de oración", "Pronto publicaremos las próximas fechas de los grupos de oración.");
+pintarLista("lista-retiros", "Retiro", "Pronto publicaremos las fechas de los retiros.");
+
+var formRegistro = document.getElementById("form-registro");
+if (formRegistro) {
+  var campoFecha = document.getElementById("r-fecha");
+  var hoy = new Date();
+  campoFecha.max = hoy.getFullYear() + "-" + String(hoy.getMonth() + 1).padStart(2, "0") + "-" + String(hoy.getDate()).padStart(2, "0");
+
+  formRegistro.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var f = ev.target;
+    var asunto = "Registro Creciendo en Pareja: " + f.querySelector("#r-n1").value.trim() + " y " + f.querySelector("#r-n2").value.trim();
+    enviar(f, document.getElementById("r-status"), asunto, "Listo. Recibimos su registro. Gracias por unirse.");
+  });
+}
+
+var formAsistencia = document.getElementById("form-asistencia");
+if (formAsistencia) {
+  pintarOpciones();
+  formAsistencia.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var f = ev.target;
+    var resp = f.querySelector('input[name="Asistencia"]:checked');
+    var asunto = "Asistencia Creciendo en Pareja: " + (resp ? resp.value : "") + " - " + f.querySelector("#a-nombres").value.trim();
+    enviar(f, document.getElementById("a-status"), asunto, "Listo. Recibimos su respuesta. Gracias por avisar.");
+  });
+}
+
+var formDudas = document.getElementById("form-dudas");
+if (formDudas) {
+  formDudas.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var f = ev.target;
+    var asunto = "Duda Creciendo en Pareja: " + f.querySelector("#d-nombre").value.trim();
+    enviar(f, document.getElementById("d-status"), asunto, "Listo. Recibimos tu duda. Te contactamos pronto.");
+  });
+}
+</script>
+</body>
+</html>
